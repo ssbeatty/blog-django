@@ -1,0 +1,135 @@
+{% extends "blog/base.html" %}
+{% block title %}
+    <title>{{ article.title }}</title>
+{% endblock %}
+
+
+{% block meta %}
+    <meta name="keywords"
+          content="{{ article.title }},{% for tag in article.tags.all %}{{ tag }},{% endfor %}{{ article.category }}"/>
+{% endblock %}
+
+{% load custom_filter %}
+{% block content %}
+
+    <div class="mysection content">
+        <article>
+            <h3>{{ article.title }}</h3>
+            <div class="post-line bg-color">
+                <ul>
+                    <li><a title="{{ article.user }}发表于{{ article.create_time }}"><i class="el-time"></i>
+                        <time>{{ article.create_time }}</time>
+                    </a></li>
+                    <li><a href="#"><i class="el-user"></i>{{ article.user }}</a></li>
+                    <li><a href="#Coon" title="转到评论"><i class="el-comment"></i>{{ article.comment_count }}条</a></li>
+                    <li><a title="已有 {{ article.view }} 次浏览"><i class="el-eye-open"></i>{{ article.view }}</a></li>
+                </ul>
+            </div>
+            <div class="article-content bg-color markdown-body">
+                <div class="post-content" style="padding: 10px 20px 20px 10px">
+                    <div class="BlogAnchor" style="text-indent: 20px; font-size: 14px; margin-bottom: 30px">
+                        <div class="AnchorContent" id="AnchorContent">
+                            {{ article.content|custom_markdown|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="article_tag">
+                <ul>
+                    <li><a href="{% url "blog:article" pk=article.category_id %}"
+                           title="归类：{{ article.category }}">{{ article.category }}</a></li>
+                    {% for tag in article.tags.all %}
+                        <li><a href="{% url "blog:tag" name=tag.title %}"
+                               title="标签：{{ tag.title }} ">{{ tag.title }}</a>&nbsp;
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <hr>
+        </article>
+        <h3 class="form-btn blue-text"><i class="el-edit"></i>我要留言</h3>
+        <h1 id="Coon"></h1>
+        {% csrf_token %}
+        <div class="comment">
+            <div class="cont-user">
+                <input id="comment-user" class="need" placeholder="请输入昵称" onfocus="this.placeholder=''"
+                       onblur="this.placeholder='请输入昵称'" type="text">
+            </div>
+            <textarea id="comment-cont" class="need" cols="10" rows="5" placeholder="说点什么吧"
+                      onfocus="this.placeholder=''" onblur="this.placeholder='说点什么吧'"></textarea>
+            <ul>
+                <li><a id="cont-btn" href="javaScript:;">发布评论</a></li>
+            </ul>
+        </div>
+        <hr>
+        <h3 class="form-btn blue-text"><i class="el-edit"></i>最新评论</h3>
+        <div class="cont" id="cont-list"></div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                data: {csrfmiddlewaretoken: '{{ csrf_token }}'}
+            });
+            getcomment();
+            $('#cont-btn').click(function () {
+                if ($("#comment-user").val().length === 0) {
+                    alert("Error:用户名不能为空");
+                    $("#comment-user").focus();
+                    return false;
+                }
+                ;
+                if ($("#comment-cont").val().length === 0) {
+                    alert("Error:内容不能为空");
+                    $("#id_email").focus();
+                    return false;
+                }
+                ;
+                var comment_text = $('#comment-cont').val();
+                var comment_user = $('#comment-user').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "blog:comment" pk=article.nid %}',
+                    data: {
+                        comment_body: comment_text,
+                        comment_name: comment_user
+                    },
+                    success: function (callback) {
+                        var data = $.parseJSON(callback);
+                        if (data.result === 'successfully') {
+                            getcomment();
+                            resettext();
+                        } else {
+                            alert(data.msg)
+                        }
+
+                    }
+                })
+
+            });
+        });
+
+        function getcomment() {
+            $.ajax({
+                type: 'GET',
+                url: '{% url "blog:get_comment" pk=article.nid %}',
+                success: function (call) {
+                    var datas = $.parseJSON(call);
+                    $('#cont-list').html(datas.answer);
+                }
+            })
+        }
+
+        function resettext() {
+            $('#comment-cont').val('');
+            $('#comment-user').val('');
+        }
+
+    </script>
+{% endblock %}

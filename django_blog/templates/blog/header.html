@@ -1,0 +1,42 @@
+<header class="Myheader">
+    <div class="top">
+        <div class="top-left">
+            <!--头像 开始-->
+            <div class="logo"><a href="{% url "blog:index" %}"><img src="/static/images/icon/logo3.png"/></a></div>
+            <!--头像 结束-->
+            <!--博客信息栏 开始-->
+            <div class="web-info">
+                <i class="el-speaker"></i>
+                <ul class="mulitline">
+                    <li>飒飒吧的个人博客</li>
+                    <li>仍在建设中</li>
+                </ul>
+            </div>
+            <!--博客信息栏结束-->
+        </div>
+        <!--导航 开始-->
+        <div class="mynav">
+            <ul class="clearfix">
+                <li><a href="{% url "blog:index" %}">首页</a></li>
+                <li><a href="{% url "blog:about" %}">关于</a></li>
+                <li><a href="{% url "blog:article" pk=0 %}">博客</a></li>
+                <li class="drop">
+                    <a href="javaScript:;">
+                        分类
+                        <i class="el-chevron-down"></i>
+                    </a>
+                    <div class="drop-nav">
+                        <ul>
+                            {% for category in category_list %}
+                                <li><a href="{% url "blog:article" pk=category.nid %}">{{ category.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="{% url "blog:archive" %}">归档</a></li>
+                <li><a href="{% url "blog:link" %}">链接</a></li>
+            </ul>
+        </div>
+        <!--导航 结束-->
+    </div>
+</header>

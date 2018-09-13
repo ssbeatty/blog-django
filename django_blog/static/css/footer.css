@@ -1,0 +1,244 @@
+/*左侧和底部*/
+
+/*底部 样式*/
+
+.foot-nav {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    overflow: hidden;
+    font-size: 12px;
+    background: #202121;
+    color: #fff;
+}
+
+.foot-nav .copy-right {
+    margin-bottom: 10px;
+}
+
+#toTop {
+    width: 47px;
+    height: 47px;
+    background: url(../images/icon/back-top-btn.png) no-repeat;
+    text-align: center;
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    cursor: pointer;
+    text-indent: -9999px;
+    z-index: 12;
+    display: none;
+}
+
+#toTop {
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    right: 10px;
+}
+
+/*左侧 样式*/
+.mysection {
+    width: 65%;
+    float: left;
+}
+
+.arclist {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 25px;
+}
+
+.arclist > ul {
+    width: 100%;
+}
+
+.arclist > ul > li {
+    width: 100%;
+    margin: auto;
+    padding: 25px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.arclist > ul > li > .arcimg {
+    width: 25%;
+    height: 105px;
+    float: left;
+    overflow: hidden;
+}
+
+.arclist > ul > li > .arcimg img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.arc-right {
+    width: 71%;
+    float: right;
+    position: relative;
+}
+
+.arc-right h4 {
+    padding: 0;
+    margin: 0;
+    background: none;
+    font-size: 18px;
+    padding-bottom: 11px;
+    text-indent: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.arc-right p {
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 54px;
+    color: #515151;
+}
+
+.arc-right ul {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+.arc-right ul li {
+    float: left;
+    overflow: hidden;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #888;
+    max-width: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.arc-right ul li:last-child {
+    float: right;
+}
+
+.arclist > ul > li:hover img {
+    transform: scale(1.1);
+}
+
+.blue-text {
+    color: #0181da
+}
+
+#tuijian, #Hot, #New {
+    background-position: -100% -100%;
+}
+#tuijian {
+    background: rgba(255, 255, 255, 0.5) url(/static/images/icon/tj2.gif) no-repeat 98% 8px;
+}
+#New {
+    background: rgba(255, 255, 255, 0.5) url(/static/images/icon/new.gif) no-repeat 98% 8px;
+}
+
+#Hot {
+    background: rgba(255, 255, 255, 0.5) url(/static/images/icon/hot.gif) no-repeat 98% 8px;
+}
+
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+
+    margin-top: 0;
+
+    margin-bottom: 0;
+
+    padding-bottom: 0.3em;
+
+    border-bottom: 1px solid #eee;
+
+    text-indent: 20px;
+
+    font-family: monospace;
+
+}
+
+.markdown-body h1 {
+
+    font-size: 32px;
+
+    font-weight: 600;
+
+}
+
+.markdown-body h2 {
+
+    font-size: 24px;
+
+    font-weight: 600;
+
+}
+
+.markdown-body h3 {
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    text-align: left;
+
+}
+
+.markdown-body h4 {
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+}
+
+.markdown-body h5 {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+.markdown-body h6 {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.markdown-body p{
+
+    margin-top: 0;
+
+    margin-bottom: 16px;
+
+}
+
+.markdown-body a {
+
+    color: #4078c0;
+
+    text-decoration: none;
+
+}
+
+.markdown-body a:hover,
+.markdown-body a:active {
+
+    text-decoration: underline;
+
+}
