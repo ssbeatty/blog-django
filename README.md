@@ -20,3 +20,6 @@ admin安装mdeditor增加markdown语法编辑器
 演示地址   http://www.dnclever.com
 
 目前不能支持手机浏览，但是会一直更新下去。
+
+ps：
+    前端ui借用某大神的博客，如果觉得还可以可以给个star，互相学习，互相进步
