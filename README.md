@@ -17,8 +17,6 @@ admin安装mdeditor增加markdown语法编辑器
 项目使用nginx加uwsgi部署在搬瓦工服务器上   
 项目根目录下有nginx，uwsgi的相关配置
 
-演示地址   http://www.dnclever.com
-
 目前不能支持手机浏览，但是会一直更新下去。
 
 ps：
